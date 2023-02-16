@@ -42,8 +42,7 @@ class Sistema():
     def verNumeroPacientes(self):
         return self.__numero_pacientes
 
-    def verDatosPacientes(self):
-        cedula = int(input("Ingrese la Cédula a buscar: "))
+    def verDatosPacientes(self, cedula):
         # Es for paciente y no cedula porque en la lista hay pacientes no numeros 
         for paciente in self.__lista_pacientes: 
             if cedula == paciente.verCedula():
@@ -82,7 +81,8 @@ def main():
         elif menu == 2:
             print("Número total de pacientes: " + str(mi_sistema.verNumeroPacientes()))
         elif menu == 3:
-            mi_sistema.verDatosPacientes()
+            cedula = int(input("Ingrese la Cédula a buscar: "))
+            mi_sistema.verDatosPacientes(cedula)
         elif menu == 4:
             break
         else: 
