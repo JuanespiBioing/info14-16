@@ -46,20 +46,17 @@ class Sistema():
         # Es for paciente y no cedula porque en la lista hay pacientes no numeros 
         for paciente in self.__lista_pacientes: 
             if cedula == paciente.verCedula():
-                print("Nombre: " + paciente.verNombre())
-                print("Cédula: " + str(paciente.verCedula()))
-                print("Género: " + paciente.verGenero())
-                print("Servicio: " + paciente.verServicio())
-
+                return paciente
 
 def main():
     mi_sistema = Sistema()
 
 
     while True:
-        menu = int(input("""1.Nuevo Paciente
-        2. Número de Pacientes
-        3. Datos Paciente
+        menu = int(input("""
+        1.Nuevo Paciente
+        2. Datos paciente.
+        3. Número de pacientes.
         4. Salir
         > """))
         if menu == 1:
@@ -77,13 +74,21 @@ def main():
             p.asignarGenero(genero)
             p.asignarServicio(servicio)
             mi_sistema.ingresarPaciente(p)
-
+        
         elif menu == 2:
-            print("Número total de pacientes: " + str(mi_sistema.verNumeroPacientes()))
-        elif menu == 3:
             cedula = int(input("Ingrese la Cédula a buscar: "))
-            mi_sistema.verDatosPacientes(cedula)
+            paciente = mi_sistema.verDatosPacientes(cedula)
+            print("Nombre: " + paciente.verNombre())
+            print("Cédula: " + str(paciente.verCedula()))
+            print("Género: " + paciente.verGenero())
+            print("Servicio: " + paciente.verServicio())
+
+        elif menu == 3:
+            print("Número total de pacientes: " + str(mi_sistema.verNumeroPacientes()))
+
         elif menu == 4:
             break
         else: 
             print("Opción inválida")
+
+main()
